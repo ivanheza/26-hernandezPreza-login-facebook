@@ -1,5 +1,12 @@
 import dotenv from "dotenv"
+import minimist from "minimist"
+
 dotenv.config()
+///minimist
+// node server.js --port 8080
+let p = minimist(process.argv.slice(2))
+///console.log("minimistPort", p.port)
+
 ///---- ///---- Se configurará desde aqui el acceso a base de datos
 export default {
    mongoDB: {
@@ -14,4 +21,5 @@ export default {
       appID: process.env.FACEBOOK_APP_ID,
       appSecret: process.env.FACEBOOK_APP_SECRET,
    },
+   minimist_PORT: p.port,
 }

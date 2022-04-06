@@ -1,4 +1,4 @@
-# Desafío Inicio de Sesión con Facebook
+# Desafío Uso del Objeto Process
 
 ##### Inicializar desde la consola dentro de la carpeta server con:
 
@@ -7,6 +7,22 @@
 -  Acceder al proyecto en la dirección **http://localhost:9000**
 
 Para este desafío persistencia de los datos esta basada en FileSystem y la persistencia de usuarios y sesiones en MONGODB.
+La funcionalidad del proyecto no cambio, solo se agregaron las nuevas instrucciones para el desafio del Object Process.
+
+## 1. Variables de Entorno .env y minimist
+
+-  Todas las variables que contienen variables e información delicada estan dentro del archivo _.env_
+-  En el archivo config.js se encuentra una configuración para definir el puerto por medio de minimist para prueba inicializar la consola con _node server.js --port 3000_ sustituir el 3000 por el puerto deseado
+
+## 2. RUTA '/info'
+
+-  Se añadió la ruta info para presentar los datos del process object.
+
+## 3. RUTA '/api/randoms'
+
+-  Ingresar por query la cantidad de numeros aleatorios a calcular. Se calcula la cantidad de veces que se repite cada número.
+
+---------------/// Consignas Anteriores
 
 ## LOG-IN
 

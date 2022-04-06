@@ -7,8 +7,12 @@ import passport from "passport"
 import MongoStore from "connect-mongo"
 import {createServer} from "http"
 import {Server} from "socket.io"
+
+///---
 import productosRouter from "./routes/ApiProductosRouter.js"
 import loginRouter from "./routes/loginRouter.js"
+import processRouter from "./routes/processInfoRouter.js"
+///---
 import productosSocket from "./routes/web-sockets/wsProductos.js"
 import mensajesSocket from "./routes/web-sockets/wsMensajes.js"
 import config from "./config.js"
@@ -39,13 +43,13 @@ const hbs = create({
    partialsDir: path.join(app.get("views"), "partials"),
 })
 app.use(express.static("./public"))
-app.engine("handlebars", hbs.engine)
 
 app.set("view engine", "handlebars")
 app.set("views", "./views")
 ///---- Config Middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.engine("handlebars", hbs.engine)
 //app.use(cors({credentials: true}))
 ///----  Configuración de Mongo Store
 app.use(
@@ -68,6 +72,7 @@ app.use(passport.session())
 connectDB()
 
 ///---- Rutas API REST
+app.use("/info", processRouter)
 app.use("/api", productosRouter)
 
 ///---- rutas para el login y home
@@ -77,7 +82,8 @@ app.get("*", (req, res) => {
    res.status(400).json({error: 0, descripcion: "La ruta que buscas no existe"})
 })
 ///
-const PORT = process.env.PORT || 8080
+const PORT = config.minimist_PORT || process.env.PORT || 8080
+//console.log(PORT)
 
 httpServer.listen(PORT, () => {
    console.log("listening on: ", PORT)
