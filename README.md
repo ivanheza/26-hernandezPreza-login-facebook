@@ -20,7 +20,8 @@ La funcionalidad del proyecto no cambio, solo se agregaron las nuevas instruccio
 
 ## 3. RUTA '/api/randoms'
 
--  Ingresar por query la cantidad de numeros aleatorios a calcular. Se calcula la cantidad de veces que se repite cada número.
+-  Ingresar por query la cantidad de numeros aleatorios a calcular. _/randoms?cant=20000_ Se calculará la cantidad de veces que se repite cada número.
+   En caso de no agregar por query se ejecutara un número por default
 
 ---------------/// Consignas Anteriores
 
